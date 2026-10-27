@@ -1,0 +1,452 @@
+/* Página e cores principais */
+:root {
+    --vermelho: #dc3545;
+    --vermelho-escuro: #921c2c;
+    --borda: #53151d;
+    --visor: #14262d;
+    --texto: #e5eff0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 32px 16px;
+    background: #171b23;
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+}
+
+/* Carcaça */
+.pokedex {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px;
+    background: var(--vermelho);
+    border: 4px solid var(--borda);
+    border-radius: 32px 32px 60px 32px;
+    box-shadow:
+        inset 4px 4px 0 rgb(255 255 255 / 15%),
+        inset -6px -8px 0 rgb(0 0 0 / 15%),
+        0 20px 45px rgb(0 0 0 / 40%);
+}
+
+.pokedex-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 4px solid var(--vermelho-escuro);
+}
+
+.painel-luzes {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.sensor {
+    display: block;
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    border: 6px solid #e4e6e8;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, #d6f7ff, #30bcec 45%, #12658c);
+    box-shadow: 0 3px 0 var(--borda);
+}
+
+.luzes {
+    display: flex;
+    gap: 8px;
+    padding-top: 5px;
+}
+
+.luz {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--borda);
+    border-radius: 50%;
+}
+
+.luz-vermelha {
+    background: #ff7777;
+}
+
+.luz-amarela {
+    background: #ffdc60;
+}
+
+.luz-verde {
+    background: #70e58b;
+}
+
+.marca {
+    text-align: right;
+}
+
+.marca h1 {
+    margin: 0;
+    color: #fff1c6;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.marca span {
+    color: #fff1c6;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+}
+
+/* Moldura e tela */
+.moldura {
+    padding: 20px 20px 12px;
+    background: #d8dcdf;
+    border: 3px solid var(--borda);
+    border-radius: 18px 18px 42px 18px;
+}
+
+.visor {
+    overflow: hidden;
+    background: var(--visor);
+    border: 4px solid #303b41;
+    border-radius: 12px;
+}
+
+.visor-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: #0b191f;
+    border-bottom: 1px solid #30464d;
+    color: #98b4ba;
+    font-family: monospace;
+    font-size: 0.8rem;
+}
+
+.indicador {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #75e697;
+}
+
+.versao {
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.visor-conteudo {
+    max-height: 65vh;
+    overflow-y: auto;
+    padding: 24px;
+    scrollbar-color: #55777f #14262d;
+}
+
+#contador {
+    color: #a8bfc5;
+    font-size: 0.9rem;
+}
+
+/* Pesquisa e seleção */
+.form-label {
+    color: #b8ced3;
+    font-size: 0.85rem;
+}
+
+.form-control,
+.form-select {
+    background-color: #0d1d23;
+    color: var(--texto);
+    border-color: #3e5961;
+}
+
+.form-control::placeholder {
+    color: #91a8ae;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #0d1d23;
+    color: var(--texto);
+    border-color: #75e697;
+    box-shadow: 0 0 0 0.2rem rgb(117 230 151 / 15%);
+}
+
+.form-select {
+    /* Seta clara para o fundo escuro */
+    --bs-form-select-bg-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23e5eff0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Cards */
+.pokemon-card {
+    background: #1b333b;
+    color: var(--texto);
+    border: 1px solid #3e5961;
+    border-radius: 14px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-4px);
+    border-color: #75e697;
+}
+
+.pokemon-imagem {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.pokemon-numero {
+    margin-bottom: 5px;
+    color: #a8bfc5;
+    font-family: monospace;
+}
+
+.pokemon-tipos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Acabamento abaixo da tela */
+.moldura-base {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px 0;
+}
+
+.botao-vermelho {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--borda);
+    border-radius: 50%;
+    background: var(--vermelho);
+}
+
+.alto-falante {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.alto-falante span {
+    width: 44px;
+    height: 3px;
+    border-radius: 4px;
+    background: #66727a;
+}
+
+/* Controles decorativos */
+.pokedex-rodape {
+    padding: 24px 8px 0;
+}
+
+.controles-decorativos {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.botao-escuro {
+    width: 42px;
+    height: 42px;
+    border: 3px solid var(--borda);
+    border-radius: 50%;
+    background: #26313a;
+    box-shadow: 0 3px 0 var(--borda);
+}
+
+.botao-barra {
+    width: 70px;
+    height: 10px;
+    border: 2px solid var(--borda);
+    border-radius: 8px;
+    background: #f2cd58;
+}
+
+.direcional {
+    width: 56px;
+    height: 56px;
+    margin-left: auto;
+    background: #26313a;
+    clip-path: polygon(33% 0, 67% 0, 67% 33%, 100% 33%,
+            100% 67%, 67% 67%, 67% 100%, 33% 100%,
+            33% 67%, 0 67%, 0 33%, 33% 33%);
+}
+
+.pokedex-rodape p {
+    margin: 18px 0 0;
+    color: #fff1c6;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+}
+
+/* Adaptação para celular */
+@media (max-width: 575px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    .pokedex {
+        padding: 14px;
+        border-radius: 24px 24px 40px 24px;
+    }
+
+    .sensor {
+        width: 50px;
+        height: 50px;
+        border-width: 4px;
+    }
+
+    .painel-luzes {
+        gap: 10px;
+    }
+
+    .luzes {
+        gap: 4px;
+    }
+
+    .luz {
+        width: 12px;
+        height: 12px;
+    }
+
+    .marca span,
+    .versao {
+        display: none;
+    }
+
+    .moldura {
+        padding: 10px 10px 12px;
+    }
+
+    .visor-conteudo {
+        padding: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pokemon-card {
+        transition: none;
+    }
+
+    .pokemon-card:hover {
+        transform: none;
+    }
+}
+
+/* Janela com os detalhes */
+.ficha {
+    width: min(560px, calc(100% - 24px));
+    max-height: 90vh;
+    margin: auto;
+    padding: 0;
+    overflow-y: auto;
+    background: #14262d;
+    color: #e5eff0;
+    border: 4px solid #dc3545;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgb(0 0 0 / 50%);
+}
+
+.ficha::backdrop {
+    background: rgb(0 0 0 / 75%);
+}
+
+.ficha-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #0b191f;
+    border-bottom: 1px solid #3e5961;
+    font-family: monospace;
+}
+
+.ficha-conteudo {
+    padding: 24px;
+}
+
+.ficha-numero {
+    color: #a8bfc5;
+    font-family: monospace;
+}
+
+.ficha-imagem {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    height: 220px;
+    margin: 12px auto;
+    object-fit: contain;
+}
+
+.ficha-tipos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.atributo {
+    margin-bottom: 14px;
+}
+
+.atributo-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.atributo-barra {
+    height: 9px;
+    overflow: hidden;
+    background: #0b191f;
+    border-radius: 8px;
+}
+
+.atributo-preenchimento {
+    height: 100%;
+    background: #75e697;
+    border-radius: inherit;
+}
+
+.ficha-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #3e5961;
+    font-weight: bold;
+}
+
+.botao-detalhes {
+    margin-top: 16px;
+    color: #75e697;
+    border: 1px solid #75e697;
+}
+
+.botao-detalhes:hover,
+.botao-detalhes:focus-visible {
+    background: #75e697;
+    color: #0b191f;
+}
